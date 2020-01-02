@@ -6,13 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class VyTrackCreateCarPage {
-    private WebDriver driver;
+public class VyTrackCreateCarPage extends VyTrackBasePage{
 
-    public VyTrackCreateCarPage() {
-        this.driver = Driver.getDriver();
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(xpath = "//input[@data-ftid='custom_entity_type_LicensePlate']")
     public WebElement licencePlate;

@@ -1,6 +1,5 @@
 package stepDefinitions;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
 import pages.VyTrackAllCarEntitiesPage;
 import pages.VyTrackCreateCarPage;
@@ -10,6 +9,7 @@ import utilities.BrowserUtilis;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class CrateCarsStepDef {
     VyTrackLoginPage loginPage = new VyTrackLoginPage();
@@ -17,22 +17,24 @@ public class CrateCarsStepDef {
     VyTrackAllCarEntitiesPage allCarEntitiesPage = new VyTrackAllCarEntitiesPage();
     VyTrackCreateCarPage vyTrackCreateCarPage = new VyTrackCreateCarPage();
 
+    @Given("user/User is in/on the login page")
+    public void user_is_in_the_login_page() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+    }
+
+
+
     @Given("As a user I log in to the application with username and password")
     public void as_a_user_I_log_in_to_the_application_with_username_and_password() {
         loginPage.login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
         BrowserUtilis.waitForPageToLoad(5);
-
     }
 
     @Given("I hover over fleet and click on Vehicles")
     public void i_hover_over_fleet_and_click_on_Vehicles() {
-
-        BrowserUtilis.hover(dashboard.fleet);
-
-
-        BrowserUtilis.waitForClickablility(dashboard.vehicles,10);
-        BrowserUtilis.clickWithWait(dashboard.vehicles);
-
+        BrowserUtilis.waitForPageToLoad(10);
+        BrowserUtilis.waitForPageToLoad(10);
+        dashboard.hoverOnceAndClick("fleet","vehicles");
 
          BrowserUtilis.waitForClickablility(allCarEntitiesPage.createCar,20);
 
@@ -57,19 +59,22 @@ public class CrateCarsStepDef {
         BrowserUtilis.select(vyTrackCreateCarPage.transmissionSelector,map.get("Transmission"));
         BrowserUtilis.select(vyTrackCreateCarPage.fuelTypeSelector,map.get("FuelType"));
         vyTrackCreateCarPage.logo.sendKeys(map.get("Logo"));
-        vyTrackCreateCarPage.getTags(map.get("Tags")).click();
+        BrowserUtilis.clickWithWait(vyTrackCreateCarPage.getTags(map.get("Tags")));
+
     }
     @Given("I save and close")
     public void i_save_and_close() {
         //BrowserUtilis.clickWithWait(vyTrackCreateCarPage.save);
         BrowserUtilis.clickWithJS(vyTrackCreateCarPage.save);
+        BrowserUtilis.wait(5);
     }
 
     @Then("I verify new car page is loaded with title contains  license plate {string}")
     public void i_verify_new_car_page_is_loaded_with_title_contains_license_plate(String args) {
-        BrowserUtilis.waitForPageTitle(Driver.getDriver().getTitle());
+
+         BrowserUtilis.waitForPageTitle(Driver.getDriver().getTitle());
         String title = Driver.getDriver().getTitle();
         System.out.println(title);
-//        Assert.assertTrue("title does not match with the expected page title",title.contains(args));
+        Assert.assertTrue("title does not match with the expected page title",title.contains(args));
     }
 }

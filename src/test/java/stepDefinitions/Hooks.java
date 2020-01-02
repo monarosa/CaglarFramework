@@ -16,10 +16,11 @@ public class Hooks {
 
     @Before
     public void setUp() {
+
         WebDriver driver = Driver.getDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get(ConfigurationReader.getProperty("url"));
+
     }
 
     @After
@@ -35,7 +36,7 @@ public class Hooks {
         }
         System.out.println("##############################");
         //after every test, we gonna close browser
-        Driver.close();
-        BrowserUtilis.wait(3);
+       Driver.close();
+
     }
 }

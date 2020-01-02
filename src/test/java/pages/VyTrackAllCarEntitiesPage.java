@@ -6,13 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class VyTrackAllCarEntitiesPage {
-    private WebDriver driver;
+public class VyTrackAllCarEntitiesPage extends VyTrackBasePage{
 
-    public VyTrackAllCarEntitiesPage() {
-        this.driver = Driver.getDriver();
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(xpath = "//a[@title='Create Car']")
     public WebElement createCar;
