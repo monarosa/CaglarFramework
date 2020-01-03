@@ -5,9 +5,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.*;
 import pages.GasMilageCalculatorPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
@@ -23,11 +21,11 @@ import java.util.concurrent.TimeUnit;
 public class BasicDataDrivenTest {
 
     private static WebDriver driver;
-    Workbook workbook;
-    Sheet worksheet;
+    static Workbook workbook;
+    static  Sheet worksheet;
     GasMilageCalculatorPage gasPage;
-    FileInputStream inStream;
-    FileOutputStream outStream;
+    static FileInputStream  inStream;
+    static FileOutputStream outStream;
     public static final int CORRUNT_OD_COLUMN = 1;
     public static final int PREVIUOS_OD_COLUMN = 2;
     public static final int GAS_COLUMN = 3;
@@ -36,7 +34,7 @@ public class BasicDataDrivenTest {
     public static final int STATUS = 6;
     public static final int TIME = 7;
     @BeforeClass()
-    public void setUp() throws Exception {
+    public static void setUp() throws Exception {
         inStream = new FileInputStream(ConfigurationReader.getProperty("gasmilage.testdata.path"));
 
         workbook = WorkbookFactory.create(inStream);
@@ -57,6 +55,7 @@ public class BasicDataDrivenTest {
             if(!currentRow.getCell(0).toString().equalsIgnoreCase("Y")){
                 if(currentRow.getCell(6)==null){currentRow.createCell(6);
                 }
+                System.out.println("skip requested");
                 currentRow.getCell(6).setCellValue("skip requested");
                 continue;
             }
@@ -108,7 +107,7 @@ public class BasicDataDrivenTest {
     }
 
     @AfterClass()
-    public void tearDown() throws IOException {
+    public static void tearDown() throws IOException {
         outStream = new FileOutputStream(ConfigurationReader.getProperty("gasmilage.testdata.path"));
         workbook.write(outStream);
         inStream.close();
