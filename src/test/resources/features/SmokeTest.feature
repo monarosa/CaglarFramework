@@ -1,6 +1,7 @@
 @smoke_test
 Feature: Smoke test
 This is for all the important functionality
+  this is another line created by local machine
 
   Background: open login page and login as store manager
     Given user is on the login page
