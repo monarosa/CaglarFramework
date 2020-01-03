@@ -61,12 +61,7 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.21</version>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
-        </dependency>
+
 
     </dependencies>
 
@@ -77,8 +72,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
+                    <runOrder>Alphabetical</runOrder>
                     <includes>
-                        <include>**/CucumberRunner.java</include>
+                        <include>**/CukesRunner.java</include>
+                        <include>**/SmokeTestRunner</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>

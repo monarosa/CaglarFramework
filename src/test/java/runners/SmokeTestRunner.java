@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
         },
         features="src/test/resources/features/",
         glue="stepDefinitions/",
-       tags =  {"@calendar_events"},
+        tags =  {"@smoke_test"},
         dryRun =false
         )
-public class CukesRunner {
+public class SmokeTestRunner {
 }
 
 
