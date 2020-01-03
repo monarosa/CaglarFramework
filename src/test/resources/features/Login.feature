@@ -1,7 +1,8 @@
 @login
 Feature: Login
   As user, I want to be able to login into vytrack
-  under different roles with username and password
+  under different roles with username and password,
+  This is addional commnent written here to fix something on jenkins
 
 #  Any step that was implemented before, can be reused
 #  If test step has yellow background, tat means it doesn't have implementation yet
