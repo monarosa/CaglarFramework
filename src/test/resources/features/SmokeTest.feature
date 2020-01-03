@@ -1,5 +1,6 @@
 @smoke_test
 Feature: Smoke test
+This is for all the important functionality
 
   Background: open login page and login as store manager
     Given user is on the login page
