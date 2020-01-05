@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
        tags =  {"@calendar_events"},
         dryRun =false
         )
-public class CukesRunner {
+public class CukesRunnerRunner {
 }
 
 
