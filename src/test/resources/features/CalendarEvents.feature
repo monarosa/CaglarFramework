@@ -1,6 +1,7 @@
 @calendar_events
-
 Feature: All calendar events
+
+  @reg
   Scenario: Verify column names
     Given User is in the login page
     And  As a user I log in to the application with username and password

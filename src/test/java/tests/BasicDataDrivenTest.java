@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.fail;
+
 public class BasicDataDrivenTest {
 
     private static WebDriver driver;

@@ -1,7 +1,7 @@
 Feature: creating cars to the fleet
   Car should be added to the fleet by providing valid information
 
-  @dev
+  @reg
   Scenario Outline: Create and save cars
     Given User is in the login page
     Given As a user I log in to the application with username and password

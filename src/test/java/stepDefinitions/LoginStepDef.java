@@ -22,8 +22,8 @@ public class LoginStepDef {
     @And("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String str) {
         dashboardPage.waitUntilLoaderMaskDisappear();
-        Assert.assertEquals("i needed to fail this step", 2, 7);
- //       Assert.assertTrue("Subtitle is not visible", dashboardPage.subTitle.isDisplayed());
+
+        Assert.assertTrue("Subtitle is not visible", dashboardPage.subTitle.isDisplayed());
 
     }
 
